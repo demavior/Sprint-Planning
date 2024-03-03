@@ -5,14 +5,21 @@ def calculate_average_velocity():
         try:
             print("Enter sprint times separated by space (e.g., 140 150 160):")
             sprint_times = list(map(int, input().split()))
-            # if there is no input
+            # Verify input
             if len(sprint_times) < 1:
                 print("Please enter at least one sprint time.")
                 continue
             average_velocity = round(sum(sprint_times) / len(sprint_times),1)
+            # Verify positive
+            if average_velocity < 0:
+                print("Please enter a positive integer value.")
+                continue
+
+            # Display message to user
             print(" ")
             print("Sprint Team's Average Velocity:", average_velocity)
             print(" ")
+
             break
         except ValueError:
             print("Invalid input. Please enter sprint times as integers separated by spaces.")
