@@ -10,7 +10,9 @@ def calculate_average_velocity():
                 print("Please enter at least one sprint time.")
                 continue
             average_velocity = round(sum(sprint_times) / len(sprint_times),1)
+            print(" ")
             print("Sprint Team's Average Velocity:", average_velocity)
+            print(" ")
             break
         except ValueError:
             print("Invalid input. Please enter sprint times as integers separated by spaces.")
