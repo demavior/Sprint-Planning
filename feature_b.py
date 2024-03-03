@@ -4,8 +4,8 @@ def input_positive_integer(prompt):
         try:
             # Attempt to convert user input to an integer
             value = int(input(prompt))
-            # Check if the value is less than or equal to 0
-            if value <= 0:
+            # Check if the value is less than 0
+            if value < 0:
                 print("Invalid input. Please enter an integer greater than 0.")
                 continue
             return value
@@ -21,9 +21,9 @@ def get_total_hours(sprint_days, num_members):
     for x in range(num_members):
         
         # Get days off 
-        days_off = int(input(f"Enter days off for member {x + 1}: "))
+        days_off = input_positive_integer(f"Enter days off for member {x + 1}: ")
         # Get hours for scrum activities
-        hours_scrum = int(input(f"Enter total hours committed to scrum activities for member {x + 1}: "))
+        hours_scrum = input_positive_integer(f"Enter total hours committed to scrum activities for member {x + 1}: ")
         # Get the range of available hours per day from the user
         hours_range = input(f"Enter available hours per day for member {x + 1} (e.g., '5-8'): ")
         # Split the hours range
@@ -46,7 +46,7 @@ def calculate_team_capacity():
     num_members = input_positive_integer("Enter number of team members: ")
     # Get team total hours
     team_hours = get_total_hours(sprint_days, num_members)
-    print(team_hours)
+    print("Team Effort-Hour Capacity:", team_hours)
 
 if __name__ == "__main__":
     calculate_team_capacity() 
