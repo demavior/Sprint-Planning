@@ -1,3 +1,6 @@
+from feature_a import calculate_average_velocity
+
+# Display main menu options
 def display_menu():
     print("What do you want to calculate?")
     print("1. Sprint team's average velocity")
@@ -6,18 +9,19 @@ def display_menu():
 
 def main():
     display_menu()
+    # While there is no correct input
     while True:
         choice = input("Enter your choice: ")
         if choice == '1':
             print("calculate_average_velocity")
-            #calculate_average_velocity()
-            return
+            calculate_average_velocity()
+            break
         elif choice == '2':
             print("calculate_team_capacity")
             #calculate_team_capacity()
-            return
+            break
         elif choice == '3':
-            return
+            break
         else:
             print("Invalid choice. Please enter either 1, 2 or 3.")
 
