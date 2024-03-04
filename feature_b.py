@@ -67,9 +67,21 @@ def get_total_hours(sprint_days, num_members):
         else:
             max_hours = int(hours_range[1])
         
+        # Calculate total min and max per member
+        min_hours = (sprint_days - days_off) * min_hours - hours_scrum
+        if min_hours < 0:
+            min_hours = 0
+        max_hours = (sprint_days - days_off) * max_hours - hours_scrum
+        if max_hours < 0:
+            max_hours = 0
+        
+        print(" ")
+        print(f"Member {x+1} Available effort hours: {min_hours} - {max_hours}")
+        print(" ")
+        
         # Calculate total hours within the range
-        min_total_hours += (sprint_days - days_off) * min_hours - hours_scrum
-        max_total_hours += (sprint_days - days_off) * max_hours - hours_scrum
+        min_total_hours += min_hours
+        max_total_hours += max_hours
 
     return f"{min_total_hours} - {max_total_hours}"
 
@@ -83,6 +95,7 @@ def calculate_team_capacity():
         num_members = input_positive_integer("Enter number of team members: ")
     # Get team total hours
     team_hours = get_total_hours(sprint_days, num_members)
+    
     print(" ")
     print("Team Effort-Hour Capacity:", team_hours)
     print(" ")
