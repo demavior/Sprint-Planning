@@ -34,16 +34,23 @@ def validate_hours_input(prompt):
 def input_positive_integer(prompt):
     # Loop until a valid integer greater than 0 is entered
     while True:
-        try:
-            # Attempt to convert user input to an integer
-            value = int(input(prompt))
-            # Check if the value is less than 0
-            if value < 0:
-                print("Invalid input. Please enter a positive integer value.")
-                continue
-            return value
-        except ValueError:
-            print("Invalid input. Please enter a positive integer value.")
+        # Attempt to convert user input to an integer
+        value = input(prompt)
+        if validate_positive_integer(value):
+            return int(value)
+
+def validate_positive_integer(input):
+    try:
+        # Attempt to convert user input to an integer
+        value = int(input)
+        # Check if the value is less than 0
+        if value < 0:
+            print("Invalid input. Please enter a positive value.")
+            return(False)
+        return(True)
+    except ValueError:
+        print("Invalid input. Please enter an integer value.")
+        return(False)
 
 def get_total_hours(sprint_days, num_members):
     
@@ -101,4 +108,4 @@ def calculate_team_capacity():
     print(" ")
 
 if __name__ == "__main__":
-    calculate_team_capacity() 
+    calculate_team_capacity()
